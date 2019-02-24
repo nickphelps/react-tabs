@@ -20,6 +20,9 @@ import Tab from './Tab'
           <Tab label="Login Form" 
                 isActive={activeTab === 2}
                 handleClick={() => changeTab(2)}/>
+          <Tab label="Fun People" 
+                isActive={activeTab === 3}
+                handleClick={() => changeTab(3)}/>
         </ul>
         </div>
       </div>

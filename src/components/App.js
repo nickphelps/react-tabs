@@ -4,6 +4,7 @@ import Tabs from './Tabs'
 import HelloReact from './HelloReact'
 import LoremIpsum from './LoremIpsum'
 import Login from './LoginForm'
+import FunPeople from './FunPeople'
 
 //app controls what displays . Tabs should just care about Tabs and not state.
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
             {this.state.activeTab === 0 ? <HelloReact /> : null}
             {this.state.activeTab === 1 ? <LoremIpsum /> : null}
             {this.state.activeTab === 2 ? <Login /> : null}
+            {this.state.activeTab === 3 ? <FunPeople /> : null}
           </div>
       </section>
     );
