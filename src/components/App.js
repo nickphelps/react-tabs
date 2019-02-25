@@ -3,7 +3,7 @@ import '../styles/App.css';
 import Tabs from './Tabs'
 import HelloReact from './HelloReact'
 import LoremIpsum from './LoremIpsum'
-import Login from './LoginForm'
+import Login from './Login'
 import FunPeople from './FunPeople'
 
 //app controls what displays . Tabs should just care about Tabs and not state.

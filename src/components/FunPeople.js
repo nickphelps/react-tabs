@@ -88,7 +88,6 @@ class FunPeople extends Component {
         </form>
     </div>
      <div class="content is-large">
-         {/* <p>Unfortunately, no one is fun :(</p> */}
         {this.state.boxNumber === 0 ? <p>Unfortunately, no one is fun :(</p> : [...Array(this.state.boxNumber)].map((item,index) => 
                                                                                                                 <div key={index} className="column is-4">
                                                                                                                     <div className="box content is-medium">

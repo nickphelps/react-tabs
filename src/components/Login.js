@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { runInThisContext } from 'vm';
+
 import Success from './Success'
+import LoginForm from './LoginForm'
 
 class Login extends Component {
     constructor(props) {
@@ -13,6 +14,9 @@ class Login extends Component {
          alertMessage: '',
          success: false
       }
+      this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleChangeUsername = this.handleChangeUsername.bind(this)
+      this.handleChangePassword = this.handleChangePassword.bind(this)
     }
     handleChangeUsername (event) {
         this.setState({
@@ -60,43 +64,21 @@ class Login extends Component {
     }
   render() {
     return (
-        {this.state.success ? <Success reset={() => this.resetForm()}/> : <div className="box">
-                <h1 className="title">Login</h1>
-                {this.state.showAlert ? <div className="notification is-danger">
-                                            <button class="delete"></button>
-                                            {this.state.alertMessage}
-                                            </div>: null}
-                    <form onSubmit={(event) => this.handleSubmit(event)}>
-                        <div className="field">
-                            <label className="label">Username</label>
-                            <div className="control">
-                                <input placeholder="Username" 
-                                type="text" id="usernameInput" 
-                                className="input is-medium" 
-                                value={this.state.userName} 
-                                onChange={(event) => this.handleChangeUsername(event)}/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <label className="label">Password</label>
-                            <div className="control">
-                                <input placeholder="Password" 
-                                type="password" 
-                                className="input is-medium" 
-                                value={this.state.password} 
-                                onChange={(event) => this.handleChangePassword(event)}/>
-                            </div>
-                    </div>
-                    <div className="field">
-                        <div className="control">
-                            <button className="button is-primary is-medium" 
-                                    type="submit">
-                                        Login
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>}
+    <section className="content">
+        <div style={{height: '40px'}}></div>
+    <div className="columns is-centered">
+        <div className="column is-half">
+        {this.state.success ? <Success reset={() => this.resetForm()}/> : 
+                              <LoginForm handleSubmit={this.handleSubmit}
+                                         usernameValue={this.state.usernameValue}
+                                         passwordValue={this.state.passwordValue}
+                                         showAlert={this.state.showAlert}
+                                         alertMessage={this.state.alertMessage}
+                                         handleChangePassword={this.handleChangePassword}
+                                         handleChangeUsername={this.handleChangeUsername}/>}
+        </div>
+    </div>
+    </section>
     )
   }
 }
