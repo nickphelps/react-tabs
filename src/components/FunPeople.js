@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { throws } from 'assert';
+import FunBox from './FunBox'
 
 class FunPeople extends Component {
     constructor(props) {
@@ -11,6 +11,7 @@ class FunPeople extends Component {
          buttonStatus: false,
          boxNumber: 0,
     }
+    this.handleRemoveFunReason = this.handleRemoveFunReason.bind(this)
     }
     handleChangeUserName (event) {
         this.setState({
@@ -43,8 +44,6 @@ class FunPeople extends Component {
     handleSubmit(event) {
         event.preventDefault()
         this.setState({
-            name: '',
-            funReason: '',
             boxNumber: this.state.boxNumber + 1
         })
     }
@@ -88,18 +87,11 @@ class FunPeople extends Component {
         </form>
     </div>
      <div class="content is-large">
-        {this.state.boxNumber === 0 ? <p>Unfortunately, no one is fun :(</p> : [...Array(this.state.boxNumber)].map((item,index) => 
-                                                                                                                <div key={index} className="column is-4">
-                                                                                                                    <div className="box content is-medium">
-                                                                                                                        <p>{this.state.name} is fun because {this.state.funReason}.</p>
-                                                                                                                            <button className="button is-link"
-                                                                                                                                    onClick={(event) => this.handleRemoveFunReason(event)}>
-                                                                                                                                    Remove {this.state.name}
-                                                                                                                            </button>
-                                                                                                                    </div>
-                                                                                                                </div>
-        )
-        }
+        {this.state.boxNumber === 0 ? <p>Unfortunately, no one is fun :(</p> : [...Array(this.state.boxNumber)].map((item,index) => <FunBox key={index}
+                                                                                                                                            funPerson={this.state.name}
+                                                                                                                                            funReason={this.state.funReason}
+                                                                                                                                            handleRemoveFunReason={this.handleRemoveFunReason}/>)
+    }
      </div>
     </div>
     )

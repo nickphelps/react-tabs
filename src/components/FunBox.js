@@ -1,11 +1,11 @@
 
 import React from 'react'
 
-const FunBox = () => {
+const FunBox = ( {funPerson, funReason, handleRemoveFunReason} ) => {
   return (
     <div class="box content is-medium">
-        <p>Nick is fun because He likes to party.</p>
-        <button class="button is-link">Remove Nick</button>
+        <p>{funPerson} is fun because {funReason}</p>
+        <button onClick={(event) => handleRemoveFunReason(event)} class="button is-link">Remove {funPerson}</button>
     </div>
   )
 }
